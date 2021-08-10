@@ -186,8 +186,13 @@ $(document).ready(function() {
 					else{
 						$('#register-labx_rut').prop('disabled',false);
 						$('#div-btn-check-caja').prop('disabled',false);
-						$('#div-result-check-caja').html("El RUT ingresado no corresponde a un afiliado de la Caja Los Andes, no es posible continuar el registro en la plataforma.");
-                                                $('#div-result-check-caja').addClass('labx_show_field');
+						if(resp.exists_rut){
+							$('#div-result-check-caja').html("El RUT ingresado ya existe en la plataforma, no es posible continuar el registro.");
+						}
+						else{
+							$('#div-result-check-caja').html("El RUT ingresado no corresponde a un afiliado de la Caja Los Andes, no es posible continuar el registro en la plataforma.");
+						}
+						$('#div-result-check-caja').addClass('labx_show_field');
 					}
 				},
 				error: function() {
