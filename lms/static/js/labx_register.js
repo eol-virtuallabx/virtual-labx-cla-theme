@@ -182,6 +182,11 @@ $(document).ready(function() {
 						$('#div-result-check-caja').html("El RUT ingresado corresponde a un afiliado de la Caja Los Andes, puede continuar el registro en la plataforma.");
 						$('#div-result-check-caja').addClass('labx_show_field');
 						$('#div-btn-check-caja').removeClass('labx_show_field');
+
+						$('#register-form div.form-field.email-email').show();
+						$('#register-form div.form-field.text-name').show();
+						$('#register-form div.form-field.text-username').show();
+						$('#register-form div.form-field.password-password').show();
 					}
 					else{
 						$('#register-labx_rut').prop('disabled',false);
