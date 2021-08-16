@@ -291,13 +291,30 @@ $(document).ready(function() {
 
   		return result;
 	}
-        var selector_rut  ='#register-form div.form-field.text-labx_rut';
+	var selector_rut  ='#register-form div.form-field.text-labx_rut';
+	var selector_email  ='#register-form div.form-field.email-email';
+	var selector_name  ='#register-form div.form-field.text-name';
+	var selector_username  ='#register-form div.form-field.text-username';
+	var selector_password  ='#register-form div.form-field.password-password';
 	var rut_button_html = '<div id="div-btn-check-caja"><button id="btn-check-caja">Verificar</button></div>';
 	var mess_caja_html  = '<div id="div-message-caja">Para registrarte en esta plataforma debes ser afiliado a Caja Los Andes, por favor ingresa tu RUT, y luego presiona verificar para continuar.</div>';
 	waitForEl('#register-country',function(){
 		$('#register-country').val('CL');
 	});
+	waitForEl(selector_email,function(){
+		$(selector_email).hide();
+	});
+	waitForEl(selector_name,function(){
+		$(selector_name).hide();
+	});
+	waitForEl(selector_username,function(){
+		$(selector_username).hide();
+	});
+	waitForEl(selector_password,function(){
+		$(selector_password).hide();
+	});
 	waitForEl(selector_rut,function(){
+		$(".register-form .required-fields").prepend($(selector_rut))
 		$(selector_rut).before(mess_caja_html);
         	$(selector_rut).after(rut_button_html);
 		$('#login-and-registration-container').on('change','#register-labx_rut',labx_on_change_labx_rut);
