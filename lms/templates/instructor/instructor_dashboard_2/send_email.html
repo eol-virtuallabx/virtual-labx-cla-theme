@@ -10,7 +10,6 @@ from openedx.core.djangolib.markup import HTML
 </style>
 <div class="vert-left send-email" id="section-send-email">
     <input id="welcome_mail_data" type="text" value="${section_data['welcome_data']}" hidden>
-    <div class="request-response msg msg-confirm copy" id="request-response"></div>
     <ul class="list-fields">
         % if 'welcome-mail-save' in section_data:
             <li class="field eol_welcome_mail_hide">
@@ -116,6 +115,7 @@ from openedx.core.djangolib.markup import HTML
     % if 'welcome-mail-save' in section_data:
         <input class="eol_welcome_mail_hide" onclick="save_welcome_mail(this);" type="button" name="save" value="${_("Guardar Cambios")}" data-endpoint="${ section_data['welcome-mail-save'] }" >
     % endif
+    <div class="request-response msg msg-confirm copy" id="request-response"></div>
     <div id="request-response-error" class="request-response-error"></div>
 
     %if settings.FEATURES.get('ENABLE_INSTRUCTOR_BACKGROUND_TASKS'):
