@@ -2,6 +2,7 @@
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
 <%  DPCJLANDES = [] %>
+<%  ICHNAS = [] %>
 
 <section class="courses-container container">
   <h2 class="course-tittle">CURSOS CAJA LOS ANDES</h2>
@@ -14,9 +15,13 @@
               % if 'DPCJLANDES' in course.org:
                 <%  DPCJLANDES.append(course) %>
               % else:
+                % if 'ICHNAS' in course.display_number_with_default:
+                    <%  ICHNAS.append(course) %>
+                % else:
                 <li class="courses-listing-item">
                     <%include file="course.html" args="course=course" />
                 </li>
+                % endif
               % endif
           %endfor
         </ul>
@@ -29,6 +34,21 @@
       % endif
     % endif
   </section>
+    % if len(ICHNAS) > 0:
+    <h2 class="course-tittle" style="background: #002d5d;">CURSOS NORTEAMERICANO</h2>
+    <section class="highlighted-courses">
+      <section class="courses">
+        <ul class="courses-listing">
+            ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+            %for course in ICHNAS:
+              <li class="courses-listing-item">
+                  <%include file="course.html" args="course=course" />
+              </li>
+            %endfor
+          </ul>
+      </section>
+    </section>
+    % endif
     % if len(DPCJLANDES) > 0:
     <h2 class="course-tittle" >Diplomados Caja Los Andes</h2>
     <section class="highlighted-courses">
